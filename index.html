@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOVA Entertainment – HOW WE MAKE STAR EXPERIENCES</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300&family=Noto+Sans+KR:wght@300;400;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============================================================
+     PRELOADER
+     ============================================================ -->
+<div id="preloader">
+  <div class="preloader-logo">NOVA</div>
+  <div class="preloader-bar-wrap">
+    <div class="preloader-bar"></div>
+  </div>
+  <div class="preloader-text">United Nova &nbsp;·&nbsp; Loading</div>
+</div>
+
+
+<!-- ============================================================
+     HEADER / NAVIGATION
+     ============================================================ -->
+<header id="header">
+  <nav>
+    <!-- Logo -->
+    <a class="nav-logo" href="#">NO<span>VA</span></a>
+
+    <!-- Desktop nav links -->
+    <ul class="nav-links">
+      <li class="nav-item"><a href="#">HOME</a></li>
+
+      <li class="nav-item">
+        <a href="#">COMPANY <span style="font-size:0.6rem;opacity:0.5">▾</span></a>
+        <ul class="dropdown">
+          <li><a href="#">Company Info</a></li>
+          <li><a href="#">Greetings</a></li>
+          <li><a href="#">History</a></li>
+          <li><a href="#">Business Area</a></li>
+          <li><a href="#">NOVA Cafe</a></li>
+          <li><a href="#">Location</a></li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a href="#">ARTIST <span style="font-size:0.6rem;opacity:0.5">▾</span></a>
+        <ul class="dropdown wide">
+          <li class="dropdown-section">Musicians</li>
+          <li><a href="#">ECLIPSE</a></li>
+          <li><a href="#">SOLSTICE</a></li>
+          <li><a href="#">AURA</a></li>
+          <li class="dropdown-section">Actors</li>
+          <li><a href="#">KIM SEOYON</a></li>
+          <li><a href="#">PARK JIHOON</a></li>
+          <li class="dropdown-section">Entertainers</li>
+          <li><a href="#">LEE JOOWON</a></li>
+          <li><a href="#">CHOI MINJI</a></li>
+        </ul>
+      </li>
+
+      <li class="nav-item"><a href="#">VIDEO</a></li>
+      <li class="nav-item"><a href="#">AUDITION</a></li>
+      <li class="nav-item"><a href="#">CONTACT</a></li>
+    </ul>
+
+    <!-- Hamburger (mobile only) -->
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+
+<!-- ============================================================
+     MOBILE NAV PANEL
+     ============================================================ -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+
+<nav class="mobile-nav" id="mobileNav">
+  <ul>
+    <li class="m-item"><a href="#">HOME</a></li>
+
+    <li class="m-item" onclick="toggleMobileItem(this)">
+      <a href="#">COMPANY <span class="arrow">›</span></a>
+      <div class="mobile-dropdown">
+        <a href="#">Company Info</a>
+        <a href="#">Greetings</a>
+        <a href="#">History</a>
+        <a href="#">Business Area</a>
+        <a href="#">NOVA Cafe</a>
+        <a href="#">Location</a>
+      </div>
+    </li>
+
+    <li class="m-item" onclick="toggleMobileItem(this)">
+      <a href="#">ARTIST <span class="arrow">›</span></a>
+      <div class="mobile-dropdown">
+        <div class="section-label">Musicians</div>
+        <a href="#">ECLIPSE</a>
+        <a href="#">SOLSTICE</a>
+        <a href="#">AURA</a>
+        <div class="section-label">Actors</div>
+        <a href="#">KIM SEOYON</a>
+        <a href="#">PARK JIHOON</a>
+        <div class="section-label">Entertainers</div>
+        <a href="#">LEE JOOWON</a>
+        <a href="#">CHOI MINJI</a>
+      </div>
+    </li>
+
+    <li class="m-item"><a href="#">VIDEO</a></li>
+    <li class="m-item"><a href="#">AUDITION</a></li>
+    <li class="m-item"><a href="#">CONTACT</a></li>
+  </ul>
+</nav>
+
+
+<!-- ============================================================
+     HERO SLIDER
+     ============================================================ -->
+<section class="hero" id="hero">
+  <div class="slides-container" id="slidesContainer">
+
+    <!-- Slide 1 -->
+    <div class="slide slide-1 active" id="slide-0">
+      <div class="slide-content">
+        <div class="slide-tag">New Release · Digital Single</div>
+        <div class="slide-artist">ECLIPSE</div>
+        <div class="slide-song"><em>'Horizon (Feat. DAWN)'</em> — Out Now</div>
+        <a href="#releases" class="slide-cta">Listen Now →</a>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide slide-2" id="slide-1">
+      <div class="slide-content">
+        <div class="slide-tag">Official MV · 2nd Mini Album</div>
+        <div class="slide-artist">SOLSTICE</div>
+        <div class="slide-song"><em>'Crimson Sky'</em> — 1M Views</div>
+        <a href="#releases" class="slide-cta">Watch MV →</a>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide slide-3" id="slide-2">
+      <div class="slide-content">
+        <div class="slide-tag">World Tour · 2026</div>
+        <div class="slide-artist">AURA</div>
+        <div class="slide-song"><em>'NOVA WORLD TOUR 2026'</em> — Tickets Available</div>
+        <a href="#" class="slide-cta">Get Tickets →</a>
+      </div>
+    </div>
+
+  </div><!-- /slides-container -->
+
+  <!-- Slide counter -->
+  <div class="slide-counter">
+    <span class="current" id="currentSlide">01</span> / 03
+  </div>
+
+  <!-- Prev / dots / next -->
+  <div class="slide-controls">
+    <button class="slide-btn" id="prevBtn">‹</button>
+    <div class="slide-dots" id="dotContainer">
+      <div class="dot active" onclick="goToSlide(0)"></div>
+      <div class="dot"        onclick="goToSlide(1)"></div>
+      <div class="dot"        onclick="goToSlide(2)"></div>
+    </div>
+    <button class="slide-btn" id="nextBtn">›</button>
+  </div>
+
+  <!-- News ticker -->
+  <div class="ticker">
+    <div class="ticker-label">LATEST</div>
+    <div class="ticker-track">
+      <div class="ticker-inner" id="tickerInner">
+        <span>ECLIPSE 'Horizon' Digital Single Out Now</span>
+        <span>SOLSTICE 'Crimson Sky' 1M MV Views</span>
+        <span>AURA World Tour 2026 Tickets Available</span>
+        <span>NOVA Entertainment 20th Anniversary</span>
+        <span>New Artist VEIL Debut Announcement</span>
+        <!-- Duplicated for seamless loop -->
+        <span>ECLIPSE 'Horizon' Digital Single Out Now</span>
+        <span>SOLSTICE 'Crimson Sky' 1M MV Views</span>
+        <span>AURA World Tour 2026 Tickets Available</span>
+        <span>NOVA Entertainment 20th Anniversary</span>
+        <span>New Artist VEIL Debut Announcement</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     ABOUT STRIP
+     ============================================================ -->
+<div class="about-strip reveal">
+  <div class="about-tagline">
+    HOW WE MAKE<br><span>STAR EXPERIENCES</span>
+  </div>
+  <div class="about-stats">
+    <div class="about-stat">
+      <div class="stat-number">20</div>
+      <div class="stat-label">Years of Excellence</div>
+    </div>
+    <div class="about-stat">
+      <div class="stat-number">50+</div>
+      <div class="stat-label">Artists Managed</div>
+    </div>
+    <div class="about-stat">
+      <div class="stat-number">12</div>
+      <div class="stat-label">Billboard Hits</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     RELEASES
+     ============================================================ -->
+<section class="releases" id="releases">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-eyebrow">Latest Drops</div>
+      <div class="section-title">RELEASE</div>
+    </div>
+    <a class="section-link" href="#">View All →</a>
+  </div>
+
+  <div class="releases-grid reveal">
+
+    <div class="release-card featured rc-1">
+      <div class="release-card-inner">
+        <div class="release-type">Digital Single</div>
+        <div class="release-artist">ECLIPSE</div>
+        <div class="release-title">Horizon (Feat. DAWN)</div>
+      </div>
+      <div class="release-arrow">↗</div>
+    </div>
+
+    <div class="release-card rc-2">
+      <div class="release-card-inner">
+        <div class="release-type">2nd Mini Album</div>
+        <div class="release-artist">SOLSTICE</div>
+        <div class="release-title">Crimson Sky</div>
+      </div>
+      <div class="release-arrow">↗</div>
+    </div>
+
+    <div class="release-card rc-3">
+      <div class="release-card-inner">
+        <div class="release-type">3rd Single Album</div>
+        <div class="release-artist">AURA</div>
+        <div class="release-title">Into the Light</div>
+      </div>
+      <div class="release-arrow">↗</div>
+    </div>
+
+    <div class="release-card" style="background:linear-gradient(135deg,#001a10,#00402a)">
+      <div class="release-card-inner">
+        <div class="release-type">1st Full Album</div>
+        <div class="release-artist">VEIL</div>
+        <div class="release-title">Debut: Shadow Garden</div>
+      </div>
+      <div class="release-arrow">↗</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     ARTISTS
+     ============================================================ -->
+<section class="artists" id="artists">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-eyebrow">Our Roster</div>
+      <div class="section-title">ARTIST</div>
+    </div>
+    <a class="section-link" href="#">All Artists →</a>
+  </div>
+
+  <!-- Tab buttons -->
+  <div class="artists-tabs reveal">
+    <button class="artist-tab active" onclick="switchTab(this, 'musicians')">Musicians</button>
+    <button class="artist-tab"        onclick="switchTab(this, 'actors')">Actors</button>
+    <button class="artist-tab"        onclick="switchTab(this, 'entertainers')">Entertainers</button>
+  </div>
+
+  <!-- Musicians panel -->
+  <div class="artists-panel active" id="tab-musicians">
+    <div class="artists-grid reveal">
+      <div class="artist-card ac-1">
+        <div class="artist-card-bg">E</div>
+        <div class="artist-card-overlay">
+          <div class="artist-role">Group · 7 Members</div>
+          <div class="artist-name">ECLIPSE</div>
+        </div>
+      </div>
+      <div class="artist-card ac-2">
+        <div class="artist-card-bg">S</div>
+        <div class="artist-card-overlay">
+          <div class="artist-role">Group · 5 Members</div>
+          <div class="artist-name">SOLSTICE</div>
+        </div>
+      </div>
+      <div class="artist-card ac-3">
+        <div class="artist-card-bg">A</div>
+        <div class="artist-card-overlay">
+          <div class="artist-role">Solo Artist</div>
+          <div class="artist-name">AURA</div>
+        </div>
+      </div>
+      <div class="artist-card ac-4">
+        <div class="artist-card-bg">V</div>
+        <div class="artist-card-overlay">
+          <div class="artist-role">Group · 4 Members</div>
+          <div class="artist-name">VEIL</div>
+        </div>
+      </div>
+      <div class="artist-card ac-5">
+        <div class="artist-card-bg">N</div>
+        <div class="artist-card-overlay">
+          <div class="artist-role">Duo</div>
+          <div class="artist-name">NOVA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Actors panel -->
+  <div class="artists-panel" id="tab-actors">
+    <div class="artists-grid reveal">
+      <div class="artist-card" style="background:linear-gradient(160deg,#1a0820,#3d1a50)">
+        <div class="artist-card-bg">K</div>
+        <div class="artist-card-overlay">
+          <div class="artist-role">Actor</div>
+          <div class="artist-name">KIM SEOYON</div>
+        </div>
+      </div>
+      <div class="artist-card" style="background:linear-gradient(160deg,#0a1020,#202040)">
+        <div class="artist-card-bg">P</div>
+        <div class="artist-card-overlay">
+          <div class="artist-role">Actor</div>
+          <div class="artist-name">PARK JIHOON</div>
+        </div>
+      </div>
+      <div class="artist-card" style="background:linear-gradient(160deg,#201000,#403020)">
+        <div class="artist-card-bg">C</div>
+        <div class="artist-card-overlay">
+          <div class="artist-role">Actress</div>
+          <div class="artist-name">CHOI YOONA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Entertainers panel -->
+  <div class="artists-panel" id="tab-entertainers">
+    <div class="artists-grid reveal">
+      <div class="artist-card" style="background:linear-gradient(160deg,#001520,#003050)">
+        <div class="artist-card-bg">L</div>
+        <div class="artist-card-overlay">
+          <div class="artist-role">Entertainer · MC</div>
+          <div class="artist-name">LEE JOOWON</div>
+        </div>
+      </div>
+      <div class="artist-card" style="background:linear-gradient(160deg,#150020,#380050)">
+        <div class="artist-card-bg">C</div>
+        <div class="artist-card-overlay">
+          <div class="artist-role">Comedian · Host</div>
+          <div class="artist-name">CHOI MINJI</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     VIDEO & NEWS
+     ============================================================ -->
+<section class="news" id="news">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-eyebrow">Latest Content</div>
+      <div class="section-title">VIDEO & NEWS</div>
+    </div>
+    <a class="section-link" href="#">More →</a>
+  </div>
+
+  <div class="news-grid reveal">
+
+    <!-- Featured video -->
+    <div class="news-featured">
+      <div class="nf-bg">▶</div>
+      <div class="news-featured-content">
+        <div class="release-type">Official MV · 4.2M Views</div>
+        <div class="release-artist" style="font-size:clamp(1.5rem,4vw,3rem)">ECLIPSE</div>
+        <div class="release-title" style="font-size:1rem">'Horizon (Feat. DAWN)' — Official Music Video</div>
+      </div>
+    </div>
+
+    <!-- News list -->
+    <div class="news-list">
+      <div class="news-item">
+        <div class="news-item-thumb"><div class="ni-thumb ni-1">🎤</div></div>
+        <div class="news-item-text">
+          <div class="ni-date">2026.04.28</div>
+          <div class="ni-title">SOLSTICE 'Crimson Sky' reaches 1M MV views</div>
+          <div class="ni-desc">Just 48 hours after release on all platforms.</div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-item-thumb"><div class="ni-thumb ni-2">🌏</div></div>
+        <div class="news-item-text">
+          <div class="ni-date">2026.04.20</div>
+          <div class="ni-title">AURA announces NOVA World Tour 2026 dates</div>
+          <div class="ni-desc">12 cities across North America, Europe & Asia.</div>
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-item-thumb"><div class="ni-thumb ni-3">⭐</div></div>
+        <div class="news-item-text">
+          <div class="ni-date">2026.04.10</div>
+          <div class="ni-title">NOVA Entertainment celebrates 20th Anniversary</div>
+          <div class="ni-desc">Special commemorative concert planned for June.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PARTNERS
+     ============================================================ -->
+<section class="partners" id="partners">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-eyebrow">Discover More</div>
+      <div class="section-title">THE THINGS WE DO</div>
+    </div>
+  </div>
+
+  <div class="partners-grid reveal">
+    <a class="partner-card" href="#">
+      <div class="partner-bg pb-1" style="display:flex;align-items:center;justify-content:center;font-size:5rem">🛍️</div>
+      <div class="partner-info">
+        <div class="partner-label">Official Shop</div>
+        <div class="partner-name">NOVAE</div>
+      </div>
+    </a>
+    <a class="partner-card" href="#">
+      <div class="partner-bg pb-2" style="display:flex;align-items:center;justify-content:center;font-size:5rem">🏯</div>
+      <div class="partner-info">
+        <div class="partner-label">Family Site</div>
+        <div class="partner-name">NOVA JAPAN</div>
+      </div>
+    </a>
+    <a class="partner-card" href="#">
+      <div class="partner-bg pb-3" style="display:flex;align-items:center;justify-content:center;font-size:5rem">☕</div>
+      <div class="partner-info">
+        <div class="partner-label">Nova Cafe</div>
+        <div class="partner-name">STORI CAFE</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     AUDITION CTA
+     ============================================================ -->
+<section class="audition" id="audition">
+  <div class="audition-bg"></div>
+  <div class="audition-grid"></div>
+  <div class="audition-content reveal">
+    <div class="audition-eyebrow">Follow Your Dreams</div>
+    <div class="audition-title">BECOME<br>A <span>NOVA</span><br>STAR</div>
+    <div class="audition-desc">
+      We discover and nurture raw talent into global superstars.
+      If you have the passion, we have the stage.
+    </div>
+    <div>
+      <a href="mailto:audition@novaent.com" class="btn-primary">Apply Now →</a>
+      <a href="#" class="btn-outline">Learn More</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="footer-top">
+
+    <!-- Brand column -->
+    <div class="footer-brand">
+      <a class="nav-logo" href="#">NO<span>VA</span></a>
+      <p class="footer-desc">
+        CUlture Brand Equalizer — NOVA Entertainment has been
+        shaping the global K-pop landscape for 20 years,
+        crafting unforgettable star experiences.
+      </p>
+      <div class="social-links">
+        <a class="social-link" href="#" aria-label="Instagram">IG</a>
+        <a class="social-link" href="#" aria-label="Twitter">𝕏</a>
+        <a class="social-link" href="#" aria-label="YouTube">YT</a>
+        <a class="social-link" href="#" aria-label="TikTok">TK</a>
+        <a class="social-link" href="#" aria-label="Facebook">FB</a>
+      </div>
+    </div>
+
+    <!-- Company links -->
+    <div class="footer-col">
+      <div class="footer-col-title">Company</div>
+      <a href="#">Company Info</a>
+      <a href="#">Greetings</a>
+      <a href="#">History</a>
+      <a href="#">Business Area</a>
+      <a href="#">Location</a>
+    </div>
+
+    <!-- Artist links -->
+    <div class="footer-col">
+      <div class="footer-col-title">Artists</div>
+      <a href="#">ECLIPSE</a>
+      <a href="#">SOLSTICE</a>
+      <a href="#">AURA</a>
+      <a href="#">VEIL</a>
+      <a href="#">All Artists</a>
+    </div>
+
+    <!-- Contact links -->
+    <div class="footer-col">
+      <div class="footer-col-title">Contact</div>
+      <a href="mailto:audition@novaent.com">Audition</a>
+      <a href="mailto:press@novaent.com">Press Inquiries</a>
+      <a href="mailto:business@novaent.com">Business</a>
+      <a href="#">Fan Cafe</a>
+      <a href="#">Weverse</a>
+    </div>
+
+  </div><!-- /footer-top -->
+
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 NOVA ENTERTAINMENT. All rights reserved.</div>
+    <div class="footer-policy">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Cookie Settings</a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- JavaScript (loaded last for best performance) -->
+<script src="script.js"></script>
+
+</body>
+</html>
