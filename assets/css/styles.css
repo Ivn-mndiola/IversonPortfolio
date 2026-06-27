@@ -1,0 +1,632 @@
+/* ── RESET & ROOT ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue-deep:     #071030;
+  --blue-mid:      #0d2fa3;
+  --blue-bright:   #1a56e8;
+  --white:         #ffffff;
+  --white-80:      rgba(255,255,255,0.80);
+  --white-60:      rgba(255,255,255,0.60);
+  --white-30:      rgba(255,255,255,0.30);
+  --white-10:      rgba(255,255,255,0.10);
+  --white-06:      rgba(255,255,255,0.06);
+  --nav-h:         64px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--white);
+  overflow-x: hidden;
+  background-color: var(--blue-deep); /* Fallback dark blue */
+}
+
+/* PERFORMANCE FIX + SMOOTH MOTION: Moves the fixed background to its own hardware-accelerated GPU layer with a slow camera drift animation */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1; 
+  /* FIXED: Removed the leading slash and added ../ to jump out of the CSS folder */
+  background: url('../images/main-bg.png') no-repeat center top; 
+  background-size: cover;
+  will-change: transform, filter; 
+  /* FIXED: Combined both animations onto a single line separated by a comma */
+  animation: dynamicBG 16s ease-in-out infinite alternate, fadeUp 0.8s ease-in;
+}
+
+/* Subtle background drift and ambient lighting pulse */
+@keyframes dynamicBG {
+  0% { 
+    transform: scale(1); 
+    filter: brightness(1) hue-rotate(0deg); 
+  }
+  100% { 
+    transform: scale(1.05); 
+    filter: brightness(1.12) hue-rotate(4deg); 
+  }
+}
+
+/* ────────────────────────────────
+   NAV (Massive Glass Capsules)
+──────────────────────────────── */
+nav {
+  position: fixed;
+  top: 32px; /* Dropped slightly further down to balance the larger size */
+  left: 0; right: 0;
+  z-index: 100;
+  height: 80px; /* THE MASTER HEIGHT: Bumped up significantly from 60px */
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  padding: 0;
+  background: transparent;
+  backdrop-filter: none;
+  border: none;
+}
+
+/* 1. The Left Logo Capsule */
+.nav-logo {
+  position: absolute; 
+  left: 0;
+  
+  width: 17vw; /* Extended further to the right */
+  min-width: 150px;
+  height: 100%;
+  
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-left: none; 
+  border-radius: 0 40px 40px 0; /* Exactly half of the 80px height */
+  
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; 
+  padding-right: 36px; /* Pushed the logo slightly further inward */
+  text-decoration: none;
+}
+
+.nav-logo img {
+  height: 38px; /* Increased logo size */
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+/* 2. The Right Links Capsule */
+.nav-links {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  list-style: none;
+  
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 40px; /* Exactly half of the 80px height */
+  padding: 0 72px; /* Vastly wider padding on the left/right ends */
+  gap: 64px; /* Much wider spacing between the words */
+}
+
+.nav-links a {
+  display: inline-block;
+  font-size: 14px; /* Text size bumped up noticeably */
+  font-weight: 400; 
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s, font-weight 0.2s;
+  padding: 0;
+  background: none; 
+}
+
+.nav-links a:hover {
+  color: var(--white);
+}
+
+/* The Active State Overrides */
+.nav-links a.active {
+  color: var(--white);
+  font-weight: 800; 
+  letter-spacing: 0.05em; 
+  background: none;
+}
+
+/* The Active State Overrides */
+.nav-links a.active {
+  color: var(--white);
+  font-weight: 800; /* Ultra-bold to match the screenshot */
+  letter-spacing: 0.05em; /* Slightly tighter kerning when bolded to balance the visual weight */
+  background: none;
+}
+
+/* ────────────────────────────────
+   HERO
+──────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  padding: var(--nav-h) 24px 80px;
+}
+
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-hello {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--white-60);
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.3s forwards;
+}
+
+.hero-name {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(76px, 15vw, 140px);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--white);
+  opacity: 0;
+  animation: fadeUp 0.7s 0.5s forwards;
+}
+
+.hero-subtitle {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--white-60);
+  letter-spacing: 0.08em;
+  margin-top: 16px;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.7s forwards;
+}
+
+.hero-cta {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 11px 34px;
+  border: 1.5px solid var(--white-60);
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--white);
+  text-decoration: none;
+  background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(6px);
+  transition: background 0.2s, border-color 0.2s;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.9s forwards;
+}
+
+.hero-cta:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: var(--white);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ────────────────────────────────
+   SHARED SECTION STYLES
+──────────────────────────────── */
+section { padding: 72px 48px; }
+
+.section-eyebrow {
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+
+/* ────────────────────────────────
+   FEATURED WORK
+──────────────────────────────── */
+.featured {
+  /* Translucent gradients allow the main background stars to drop through subtly */
+  background: linear-gradient(180deg, rgba(7, 16, 48, 0.4) 0%, rgba(11, 30, 86, 0.65) 100%);
+  border-top: 1px solid var(--white-10);
+  backdrop-filter: blur(2px); 
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.project-card {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 16/9;
+  cursor: pointer;
+  border: 1px solid var(--white-10);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.project-card-img {
+  width: 100%; 
+  height: 100%;
+  object-fit: cover; 
+  display: block;
+  filter: none; /* No dark fog or dimming filters applied to the image */      
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 56px rgba(0,0,0,0.6);
+}
+
+.project-card:hover .project-card-img {
+  transform: scale(1.04); /* Sleek interactive upscale zoom effect */
+}
+
+/* Card backup gradients */
+.card-bg-1 { background: linear-gradient(145deg, #b01030 0%, #1a0a28 100%); }
+.card-bg-2 { background: linear-gradient(145deg, #18182e 0%, #38384e 100%); }
+.card-bg-3 { background: linear-gradient(145deg, #1240b0 0%, #6dd5ed 100%); }
+.card-bg-4 { background: linear-gradient(145deg, #1a4a8a 0%, #0a1a4a 100%); }
+
+.card-visual {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.photo-icon {
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 14px;
+}
+
+.card-logo-text {
+  font-family: 'Oswald', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--white);
+  text-shadow: 0 2px 16px rgba(0,0,0,0.5);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.source-text   { font-size: 28px; letter-spacing: 0.1em; }
+.artlantis-text { font-size: 22px; font-style: normal; letter-spacing: 0.06em; }
+
+.project-card-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 14px;
+  /* Soft bottom vignette to keep white captions legible without dimming the main graphic layout */
+  background: linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 35%);
+  z-index: 2;
+}
+
+.project-card-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 3px;
+}
+
+.project-card-desc {
+  font-size: 10px;
+  color: var(--white-60);
+  line-height: 1.4;
+}
+
+/* ────────────────────────────────
+   MARQUEE
+──────────────────────────────── */
+.marquee-section {
+  background: rgba(9, 18, 58, 0.75); 
+  border-top: 1px solid var(--white-10);
+  border-bottom: 1px solid var(--white-10);
+  padding: 20px 0;
+  overflow: hidden;
+  backdrop-filter: blur(2px);
+}
+
+.marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  /* REMOVED gap — It breaks infinite horizontal loop resets */
+  animation: marquee 20s linear infinite;
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0 32px; /* Smooth balanced distance sizing between your logo frames */
+  opacity: 0.4;
+  transition: opacity 0.2s ease;
+}
+
+/* Base scaling properties for all marquee icons */
+.marquee-item img {
+  height: 50px;         
+  width: 130px;         /* Uniform bounding box constraint */
+  object-fit: contain;  
+  pointer-events: none;
+}
+
+.marquee-item img[alt="DANES"] {
+  width: 160px;           /* Expanded wide bounding box layout */
+  transform: scale(1.4); 
+}
+
+.marquee-item:hover { 
+  opacity: 0.8; 
+}
+
+/* The Infinite Loop Animation */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); } 
+}
+
+/* ────────────────────────────────
+   ABOUT
+──────────────────────────────── */
+.about-section {
+  /* Creates the full-width translucent banner cutting across the background image */
+  background: rgba(255, 255, 255, 0.04); 
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(2px);
+}
+
+.about-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr; /* Perfectly balances text room vs image room */
+  gap: 64px;
+  align-items: center;
+  max-width: 950px;
+  width: 100%;
+  margin: 0 auto;     /* CRITICAL: Keeps the entire block perfectly dead-centered */
+  padding: 0 48px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Overrides global section eyebrow for the exact stretched text layout mockup */
+/* The Stretched Header */
+.about-text .section-eyebrow {
+  font-family: 'Oswald', sans-serif; /* Changes the font to match your name font */
+  font-size: 48px;                  /* Increase or decrease this number to change the size */
+  font-weight: 700;                 /* Controls the thickness (e.g., 500 for medium, 700 for bold) */
+  font-style: italic;               /* Add this line only if you want it slanted like the hero name */
+  text-transform: uppercase;
+  letter-spacing: 0.02em;           /* Adjusts spacing between letters */
+  color: var(--white);
+  margin-bottom: 24px;              
+}
+
+/* The Perfectly Justified Paragraph */
+.about-body {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75); /* Slightly brighter opacity matching your screenshot */
+  line-height: 1.45;                /* Clean, readable line height spacing */
+  text-align: justify;              /* Flushes text perfectly to both left and right edges */
+  margin-bottom: 32px;
+}
+
+/* Ensures the bold keywords stay crisp and white */
+.about-body strong {
+  color: var(--white);
+  font-weight: 600;
+}
+
+.about-btn {
+  display: inline-block;
+  padding: 10px 28px;
+  border: 1.5px solid var(--white-30);
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.about-btn:hover {
+  background: var(--white-10);
+  border-color: var(--white-60);
+}
+
+/* ── PROFILE PORTRAIT CLEANUP ── */
+.about-photo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-frame {
+  width: 500px;        /* Large portrait canvas matching your structural workspace layout */
+  height: auto;
+  border: none;        /* REMOVED: Blocks overlapping artifact border rings */
+  background: none;    
+  overflow: visible;   /* CRITICAL: Allows your pop-out head to extend past margins cleanly */
+  transform: none;     
+  transition: transform 0.3s ease;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  /* Applies a custom high-fidelity drop shadow following the exact outer contour of your portrait alpha channel */
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.55));
+}
+
+.about-photo-wrap:hover .photo-frame {
+  transform: scale(1.03); /* Modern interactive hover scale lift */
+}
+
+/* ────────────────────────────────
+   CTA SECTION
+──────────────────────────────── */
+.cta-section {
+  background: linear-gradient(180deg, rgba(9, 21, 64, 0.4) 0%, rgba(6, 14, 40, 0.8) 100%);
+  border-top: 1px solid var(--white-10);
+  text-align: center;
+  padding: 110px 48px 90px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-headline {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(40px, 7vw, 76px);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1;
+  color: var(--white);
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-sub {
+  font-size: 13px;
+  color: var(--white-60);
+  margin-bottom: 38px;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 11px 36px;
+  border: 1.5px solid var(--white-60);
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  background: rgba(255,255,255,0.07);
+  transition: background 0.2s, border-color 0.2s;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-btn:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: var(--white);
+}
+
+/* ────────────────────────────────
+   FOOTER
+──────────────────────────────── */
+footer {
+  background: #040a1e;
+  border-top: 1px solid var(--white-10);
+  padding: 22px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--white-30);
+}
+
+footer a {
+  color: var(--white-30);
+  text-decoration: none;
+}
+
+footer a:hover { color: var(--white-60); }
+
+/* ────────────────────────────────
+   SCROLL REVEAL (POPPING EFFECT)
+──────────────────────────────── */
+.reveal {
+  opacity: 0;
+  /* Starts slightly shrunk down and dropped lower */
+  transform: scale(0.88) translateY(40px);
+  /* The cubic-bezier acts like a mechanical spring to give it a neat bounce snap */
+  transition: opacity 0.55s cubic-bezier(0.34, 1.6, 0.64, 1), 
+              transform 0.55s cubic-bezier(0.34, 1.6, 0.64, 1);
+  will-change: transform, opacity;
+}
+
+.reveal.visible {
+  opacity: 1;
+  /* Snaps cleanly to full size and position */
+  transform: scale(1) translateY(0);
+}
+
+/* ────────────────────────────────
+   RESPONSIVE
+──────────────────────────────── */
+@media (max-width: 900px) {
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  nav { top: 16px; justify-content: flex-end; padding-right: 16px; }
+  .nav-logo { width: 80px; min-width: 80px; padding-right: 16px; }
+  .nav-links { padding: 0 20px; gap: 16px; }
+  .nav-links a { font-size: 10px; }
+}
+
+@media (max-width: 520px) {
+  .projects-grid { grid-template-columns: 1fr; }
+  .nav-links a { padding: 5px 10px; font-size: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.fade-out {
+  animation: fadeOut 0.5s forwards;
+}
+

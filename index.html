@@ -3,46 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Iverson — Multidisciplinary Designer</title>
+  <title>Home</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
-    <a href="#hero" class="nav-logo" aria-label="Iverson logo">
-      <img src="images/logo.png" alt="Logo" />
-    </a>
-    <ul class="nav-links">
-      <li><a href="#hero" class="active">HOME</a></li>
-      <li><a href="#projects">PROJECTS</a></li>
-      <li><a href="#services">SERVICES</a></li>
-      <li><a href="#about">ABOUT</a></li>
-      <li><a href="#contact">CONTACT</a></li>
-    </ul>
-  </nav>
+  <a href="#hero" class="nav-logo" aria-label="Iverson logo">
+    <img src="assets/images/logo.png" alt="Logo" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="#hero" class="active">HOME</a></li>
+        <li><a href="pages/case-studies/projects.html">PROJECTS</a></li>
+    <li><a href="pages/services.html">SERVICES</a></li>
+    <li><a href="pages/about.html">ABOUT</a></li>
+    <li><a href="pages/contact.html">CONTACT</a></li>
+  </ul>
+</nav>
 
-  <!-- HERO -->
   <section class="hero" id="hero">
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="hero-content">
       <p class="hero-hello">Hello, I'm</p>
       <h1 class="hero-name">IVERSON</h1>
       <p class="hero-subtitle">a Multidisciplinary Designer</p>
-      <a href="#projects" class="hero-cta">VIEW PROJECTS</a>
+      <a href="pages/case-studies/projects.html" class="hero-cta">VIEW PROJECTS</a>
     </div>
   </section>
 
-  <!-- FEATURED WORK -->
   <section class="featured" id="projects">
     <p class="section-eyebrow reveal">Featured Work</p>
     <div class="projects-grid">
 
       <div class="project-card card-bg-1 reveal" style="transition-delay:0.05s">
-        <img src="images/DANES-PROJECT.png" alt="Danes Esports" class="project-card-img">
+        <img src="assets/images/DANES-PROJECT.png" alt="Danes Esports" class="project-card-img">
         <div class="project-card-overlay">
           <p class="project-card-title">Danes Esports</p>
           <p class="project-card-desc">Esports Team and Organization</p>
@@ -50,7 +47,7 @@
       </div>
 
       <div class="project-card card-bg-2 reveal" style="transition-delay:0.1s">
-        <img src="images/SOURCE-PROJECT.png" alt="Source" class="project-card-img">
+        <img src="assets/images/SOURCE-PROJECT.png" alt="Source" class="project-card-img">
         <div class="project-card-overlay">
           <p class="project-card-title">Source</p>
           <p class="project-card-desc">Baguio City based hub for premium PC parts, components and peripherals</p>
@@ -58,7 +55,7 @@
       </div>
 
       <div class="project-card card-bg-3 reveal" style="transition-delay:0.15s">
-        <img src="images/ARTLANTIS-PROJECT.png" alt="Artlantis Duo" class="project-card-img">
+        <img src="assets/images/ARTLANTIS-PROJECT.png" alt="Artlantis Duo" class="project-card-img">
         <div class="project-card-overlay">
           <p class="project-card-title">Artlantis Duo</p>
           <p class="project-card-desc">Conceptual Character Design</p>
@@ -66,15 +63,7 @@
       </div>
 
       <div class="project-card card-bg-4 reveal" style="transition-delay:0.2s">
-        <img src="images/PHOTOGRAPHY-PROJECT.png" alt="Photography" class="project-card-img">
-        <div class="card-visual photo-icon">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-            <rect x="4" y="10" width="40" height="30" rx="4" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
-            <circle cx="24" cy="25" r="8" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
-            <circle cx="24" cy="25" r="3" fill="rgba(255,255,255,0.3)"/>
-            <rect x="16" y="6" width="8" height="4" rx="1" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
-          </svg>
-        </div>
+        <img src="assets/images/PHOTOGRAPHY-PROJECT.png" alt="Photography" class="project-card-img">
         <div class="project-card-overlay">
           <p class="project-card-title">Photography</p>
           <p class="project-card-desc">A cinematic photography series captured using the Sony ZV-E10</p>
@@ -84,68 +73,63 @@
     </div>
   </section>
 
-  <!-- MARQUEE -->
-<div class="marquee-section" aria-hidden="true">
-  <div class="marquee-track">
-    <span class="marquee-item"><img src="images/danes-icon.png" alt="DANES"></span>
-    <span class="marquee-item"><img src="images/danes-main.png" alt="DS"></span>
-    <span class="marquee-item"><img src="images/nia-icon.png" alt="NIA"></span>
-    <span class="marquee-item"><img src="images/nia-main.png" alt="NIA MAIN"></span>
-    <span class="marquee-item"><img src="images/game-dev-icon.png" alt="GAME DEV"></span>
-    <span class="marquee-item"><img src="images/game-main.png" alt="ATLAS"></span>
-    <span class="marquee-item"><img src="images/source-icon.png" alt="SOURCE"></span>
-    <span class="marquee-item"><img src="images/source-main.png" alt="SOURCE"></span>
-    
-    <!-- duplicate for seamless looping -->
-    <span class="marquee-item"><img src="images/danes-icon.png" alt="DANES"></span>
-    <span class="marquee-item"><img src="images/danes-main.png" alt="DS"></span>
-    <span class="marquee-item"><img src="images/nia-icon.png" alt="NIA"></span>
-    <span class="marquee-item"><img src="images/nia-main.png" alt="NIA MAIN"></span>
-    <span class="marquee-item"><img src="images/game-dev-icon.png" alt="GAME DEV"></span>
-    <span class="marquee-item"><img src="images/game-main.png" alt="ATLAS"></span>
-    <span class="marquee-item"><img src="images/source-icon.png" alt="SOURCE"></span>
-    <span class="marquee-item"><img src="images/source-main.png" alt="SOURCE"></span>
-  </div>
-</div>
-
-  <!-- ABOUT -->
-  <section class="about-section" id="about">
-  <div class="about-inner">
-    
-    <div class="about-text reveal">
-      <p class="section-eyebrow">About Me</p>
-      <p class="about-body">
-      I'm <strong>Iverson Mendiola</strong>, a <strong>Designer</strong> based in the
-      Philippines, specializing in <strong>Branding</strong>, <strong>Visual Identity</strong>,
-      <strong>Illustration</strong>, <strong>Creative Content Design</strong> and
-      <strong>Photography</strong>. I hold a Bachelor of Fine Arts degree majoring in Visual
-      Communication and have professional experience in Graphic Design and Illustration.
-  </p>
-  <a href="#contact" class="about-btn">LEARN MORE</a>
-</div>
-
-    <div class="about-photo-wrap reveal" style="transition-delay:0.15s">
-      <div class="photo-frame">
-        <img src="images/iverson-main-profile.png" alt="Iverson Mendiola Portrait" /> 
-      </div>
+  <div class="marquee-section" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-item"><img src="assets/images/danes-icon.png" alt="DANES"></span>
+      <span class="marquee-item"><img src="assets/images/danes-main.png" alt="DS"></span>
+      <span class="marquee-item"><img src="assets/images/nia-icon.png" alt="NIA"></span>
+      <span class="marquee-item"><img src="assets/images/nia-main.png" alt="NIA MAIN"></span>
+      <span class="marquee-item"><img src="assets/images/game-dev-icon.png" alt="GAME DEV"></span>
+      <span class="marquee-item"><img src="assets/images/game-main.png" alt="ATLAS"></span>
+      <span class="marquee-item"><img src="assets/images/source-icon.png" alt="SOURCE"></span>
+      <span class="marquee-item"><img src="assets/images/source-main.png" alt="SOURCE"></span>
+      
+      <span class="marquee-item"><img src="assets/images/danes-icon.png" alt="DANES"></span>
+      <span class="marquee-item"><img src="assets/images/danes-main.png" alt="DS"></span>
+      <span class="marquee-item"><img src="assets/images/nia-icon.png" alt="NIA"></span>
+      <span class="marquee-item"><img src="assets/images/nia-main.png" alt="NIA MAIN"></span>
+      <span class="marquee-item"><img src="assets/images/game-dev-icon.png" alt="GAME DEV"></span>
+      <span class="marquee-item"><img src="assets/images/game-main.png" alt="ATLAS"></span>
+      <span class="marquee-item"><img src="assets/images/source-icon.png" alt="SOURCE"></span>
+      <span class="marquee-item"><img src="assets/images/source-main.png" alt="SOURCE"></span>
     </div>
-
   </div>
-</section>
 
-  <!-- CTA -->
+  <section class="about-section" id="about">
+    <div class="about-inner">
+      
+      <div class="about-text reveal">
+        <p class="section-eyebrow">About Me</p>
+        <p class="about-body">
+        I'm <strong>Iverson Mendiola</strong>, a <strong>Designer</strong> based in the
+        Philippines, specializing in <strong>Branding</strong>, <strong>Visual Identity</strong>,
+        <strong>Illustration</strong>, <strong>Creative Content Design</strong> and
+        <strong>Photography</strong>. I hold a Bachelor of Fine Arts degree majoring in Visual
+        Communication and have professional experience in Graphic Design and Illustration.
+        </p>
+        <a href="#contact" class="about-btn">LEARN MORE</a>
+      </div>
+
+      <div class="about-photo-wrap reveal" style="transition-delay:0.15s">
+        <div class="photo-frame">
+          <img src="assets/images/iverson-main-profile.png" alt="Iverson Mendiola Portrait" /> 
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <section class="cta-section" id="contact">
     <h2 class="cta-headline reveal">Let's work together.</h2>
     <p class="cta-sub reveal" style="transition-delay:0.1s">Got an idea or project in mind?</p>
     <a href="mailto:hello@iverson.design" class="cta-btn reveal" style="transition-delay:0.2s">START PROJECT</a>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <span>© 2026 Iverson Mendiola</span>
     <span>Baguio City, Philippines</span>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="assets/js/script.js"></script>
 </body>
 </html>

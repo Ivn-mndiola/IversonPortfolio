@@ -1,0 +1,369 @@
+@font-face {
+  font-family: 'Gill Sans MT Condensed';
+  src: url('../fonts/gill-sans-mt-condensed.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+*, *::before, *::after { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+:root {
+  --white: #ffffff;
+  --white-80: rgba(255,255,255,0.80);
+  --white-60: rgba(255,255,255,0.60);
+  --white-40: rgba(255,255,255,0.40);
+  --white-20: rgba(255,255,255,0.20);
+}
+
+body.project-showcase-body {
+  font-family: 'Inter', sans-serif;
+  color: var(--white);
+  overflow: hidden;
+  height: 100vh;
+  background-color: #030712;
+}
+
+/* ────────────────────────────────
+   MASSIVE GLASS NAVIGATION
+──────────────────────────────── */
+nav {
+  position: fixed;
+  top: 32px; 
+  left: 0; right: 0;
+  z-index: 100;
+  height: 80px; 
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  background: transparent;
+}
+
+.nav-logo {
+  position: absolute; 
+  left: 0;
+  width: 17vw; 
+  min-width: 150px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-left: none; 
+  border-radius: 0 40px 40px 0; 
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; 
+  padding-right: 36px; 
+}
+
+.nav-logo img {
+  height: 38px; 
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  list-style: none;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 40px; 
+  padding: 0 72px; 
+  gap: 64px; 
+}
+
+.nav-links a {
+  font-size: 14px; 
+  font-weight: 400; 
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+.nav-links a:hover { color: var(--white); }
+.nav-links a.active { color: var(--white); font-weight: 800; letter-spacing: 0.05em; }
+
+/* ────────────────────────────────
+   SLIDER VIEWPORT & BACKGROUNDS
+──────────────────────────────── */
+.slider-viewport {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.65s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  /* GPU compositing — prevents repaints during cross-fade */
+  will-change: opacity, visibility;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.slide.active { opacity: 1; visibility: visible; z-index: 2; }
+
+.slide-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.slide-content {
+  width: 100%;
+  max-width: 1500px;
+  height: 100%;
+  padding: 0 8vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ────────────────────────────────
+   THE MASTER UNMOVING GRID
+──────────────────────────────── */
+.slide-text-stack {
+  width: 100%;
+  max-width: 680px;
+  height: 70vh; 
+  display: grid;
+  grid-template-rows: 1.2fr auto 0.8fr; 
+  align-items: center;
+  justify-items: center;
+  gap: 24px; 
+  z-index: 3;
+  margin-top: 100px; 
+}
+
+/* Pinned Universal Button */
+.slide-cta {
+  grid-row: 2;
+  padding: 16px 56px; 
+  border: 1.5px solid rgba(255, 255, 255, 0.3); 
+  border-radius: 4px;
+  font-size: 13px; 
+  font-weight: 700;
+  letter-spacing: 0.24em; 
+  color: var(--white);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.06); 
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.25s ease;
+  margin: 0; 
+  display: inline-block;
+}
+
+.slide-cta:hover {
+  background: rgba(255,255,255,0.22);
+  border-color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* ==========================================================================
+   INDIVIDUAL SLIDE CONTROL DESKS (100% UNGROUPED)
+   ========================================================================== */
+
+/* ── SLIDE 01: DANES ── */
+.danes-title-area {
+  grid-row: 1; align-self: end;
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+}
+.danes-slide-graphic {
+  width: 100%; max-width: 520px; height: auto; max-height: 200px; object-fit: contain;
+  filter: drop-shadow(0 15px 35px rgba(0,0,0,0.65));
+}
+.danes-desc-area {
+  grid-row: 3; align-self: start;
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; justify-content: flex-start; align-items: center;
+}
+.danes-desc { font-size: 14px; color: rgba(255, 255, 255, 0.65); line-height: 1.75; max-width: 580px; text-align: center; }
+.danes-desc strong { color: var(--white); font-weight: 600; }
+
+/* ── SLIDE 02: GAMEDEV ── */
+.gamedev-title-area {
+  grid-row: 1; align-self: end;
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+}
+.gamedev-small-icon { width: 75px; height: auto; margin-bottom: 32px; filter: brightness(0) invert(1); }
+.gamedev-slide-graphic {
+  width: 100%; max-width: 540px; height: auto; max-height: 200px; object-fit: contain;
+  filter: drop-shadow(0 15px 35px rgba(0,0,0,0.65));
+}
+.gamedev-desc-area {
+  grid-row: 3; align-self: start;
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; justify-content: flex-start; align-items: center;
+}
+.gamedev-desc { font-size: 14px; color: rgba(255, 255, 255, 0.65); line-height: 1.75; max-width: 580px; text-align: center; }
+.gamedev-desc strong { color: var(--white); font-weight: 600; }
+
+/* ── SLIDE 03: NIA ── */
+.nia-title-area {
+  grid-row: 1; align-self: end; width: 100%; height: 100%;
+  display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+}
+.nia-small-icon{width: 75px; height: auto; margin-bottom: 32px; filter: brightness(0) invert(1);}
+.nia-slide-graphic { width: 100%; max-width: 520px; height: auto; max-height: 200px; object-fit: contain; filter: drop-shadow(0 15px 35px rgba(0,0,0,0.65)); }
+.nia-desc-area {
+  grid-row: 3; align-self: start; width: 100%; height: 100%;
+  display: flex; flex-direction: column; justify-content: flex-start; align-items: center;
+}
+.nia-desc { font-size: 14px; color: rgba(255, 255, 255, 0.65); line-height: 1.75; max-width: 580px; text-align: center; }
+
+/* ── SLIDE 04: SOURCE ── */
+.source-title-area {
+  grid-row: 1; align-self: end; width: 100%; height: 100%;
+  display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+}
+.source-slide-graphic { width: 100%; max-width: 520px; height: auto; max-height: 200px; object-fit: contain; filter: drop-shadow(0 15px 35px rgba(0,0,0,0.65)); }
+.source-desc-area {
+  grid-row: 3; align-self: start; width: 100%; height: 100%;
+  display: flex; flex-direction: column; justify-content: flex-start; align-items: center;
+}
+.source-desc { font-size: 14px; color: rgba(255, 255, 255, 0.65); line-height: 1.75; max-width: 580px; text-align: center; }
+
+/* ── SLIDE 05: ARTLANTIS ── */
+.artlantis-title-area {
+  grid-row: 1; align-self: end; width: 100%; height: 100%;
+  display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+}
+.artlantis-slide-graphic { width: 100%; max-width: 520px; height: auto; max-height: 200px; object-fit: contain; filter: drop-shadow(0 15px 35px rgba(0,0,0,0.65)); }
+.artlantis-desc-area {
+  grid-row: 3; align-self: start; width: 100%; height: 100%;
+  display: flex; flex-direction: column; justify-content: flex-start; align-items: center;
+}
+.artlantis-desc { font-size: 14px; color: rgba(255, 255, 255, 0.65); line-height: 1.75; max-width: 580px; text-align: center; }
+
+/* ── SLIDE 06: ILLUSTRATION ── */
+.illustration-title-area {
+  grid-row: 1; align-self: end; width: 100%; height: 100%;
+  display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+}
+.illustration-slide-graphic { width: 100%; max-width: 520px; height: auto; max-height: 200px; object-fit: contain; filter: drop-shadow(0 15px 35px rgba(0,0,0,0.65)); }
+.illustration-desc-area {
+  grid-row: 3; align-self: start; width: 100%; height: 100%;
+  display: flex; flex-direction: column; justify-content: flex-start; align-items: center;
+}
+.illustration-desc { font-size: 14px; color: rgba(255, 255, 255, 0.65); line-height: 1.75; max-width: 580px; text-align: center; }
+
+.slide-visual-right .illustration-artwork {
+  width: 200%;
+  max-width: 620px; /* Scaled up to be a majestic centerpiece */
+  max-height: 88vh;
+  object-fit: contain;
+  
+  /* NEW: translateX(60px) slides it to the right! Change 60px to push it more or less. */
+  transform: translateX(120px) rotate(-12deg) scale(1.02); 
+  
+  /* Deep cinematic shadow to separate it from the yellow background */
+  filter: drop-shadow(-20px 30px 45px rgba(0, 0, 0, 0.65));
+  
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.4s ease;
+}
+
+
+/* ── SLIDE 07: PHOTOGRAPHY ── */
+.photography-title-area {
+  grid-row: 1; align-self: end; width: 100%; height: 100%;
+  display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+}
+.photography-slide-graphic { width: 100%; max-width: 520px; height: auto; max-height: 200px; object-fit: contain; filter: drop-shadow(0 15px 35px rgba(0,0,0,0.65)); }
+.photography-desc-area {
+  grid-row: 3; align-self: start; width: 100%; height: 100%;
+  display: flex; flex-direction: column; justify-content: flex-start; align-items: center;
+}
+.photography-desc { font-size: 14px; color: rgb(255, 255, 255); line-height: 1.75; max-width: 580px; text-align: center; }
+
+
+/* ========================================================================== */
+
+/* ────────────────────────────────
+   RIGHT VISUALS (STANDARD SLIDES)
+──────────────────────────────── */
+.slide-visual-right {
+  position: relative; width: 50%; height: 80vh;
+  display: flex; align-items: center; justify-content: flex-end; z-index: 2;
+}
+.slide-visual-right img { max-height: 95%; max-width: 100%; object-fit: contain; filter: drop-shadow(0 20px 50px rgba(0,0,0,0.7)); }
+
+/* ────────────────────────────────
+   DANES ROSTER OVERRIDE
+──────────────────────────────── */
+.roster-showcase {
+  position: absolute !important; top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+  height: 100vh !important; width: 100vw !important; pointer-events: none !important; z-index: 2 !important;
+}
+.roster-face {
+  position: absolute !important; bottom: -1vh !important; right: 0 !important; height: 98vh !important; 
+  width: auto !important; max-width: none !important; object-fit: contain !important; object-position: right bottom !important; 
+  filter: drop-shadow(0 25px 60px rgba(0,0,0,0.95)) !important; opacity: 0; visibility: hidden; transition: opacity 0.85s ease-in-out, visibility 0.85s;
+  /* GPU layer for smooth cross-fade */
+  will-change: opacity, visibility;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.roster-face.active-face { opacity: 1 !important; visibility: visible !important; }
+
+/* ────────────────────────────────
+   SLIDER CONTROLS
+──────────────────────────────── */
+.nav-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%); width: 56px; height: 56px;
+  border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(16px);
+  color: var(--white); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav-arrow svg { width: 22px; height: 22px; display: block; transition: transform 0.2s ease; }
+.arrow-prev svg { transform: translateX(-1px); }
+.arrow-next svg { transform: translateX(1px); }
+.nav-arrow:hover { background: rgba(255, 255, 255, 0.18); border-color: rgba(255, 255, 255, 0.5); transform: translateY(-50%) scale(1.06); }
+.arrow-prev:hover svg { transform: translateX(-3px); }
+.arrow-next:hover svg { transform: translateX(3px); }
+.arrow-prev { left: 3.5vw; }
+.arrow-next { right: 3.5vw; }
+
+.slide-tracker { position: absolute; bottom: 40px; left: 8vw; display: flex; align-items: center; gap: 16px; z-index: 10; }
+.tracker-bar { width: 140px; height: 2px; background: rgba(255,255,255,0.15); position: relative; overflow: hidden; }
+.tracker-fill { position: absolute; top: 0; left: 0; bottom: 0; width: 0%; background: var(--white); transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); will-change: width; }
+.tracker-numbers { font-size: 12px; font-weight: 300; letter-spacing: 0.1em; color: var(--white-60); }
+
+/* ────────────────────────────────
+   REDUCED-MOTION ACCESSIBILITY
+──────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .slide,
+  .roster-face,
+  .tracker-fill,
+  .nav-arrow,
+  .slide-cta {
+    transition: none !important;
+    animation: none !important;
+  }
+}

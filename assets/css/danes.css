@@ -1,0 +1,721 @@
+@font-face {
+  font-family: 'Gill Sans MT Condensed';
+  src: url('../fonts/gill-sans-mt-condensed.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+/* ────────────────────────────────
+   RESET & ROOT VARIABLES
+──────────────────────────────── */
+*, *::before, *::after { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+:root {
+  --white: #ffffff;
+  --danes-red: #FC044C;
+  --danes-black: #23252A;
+  --danes-silver: #BBBBBF;
+  --pearl: #EDEDED;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--danes-black);
+  background-color: var(--white);
+  overflow-x: hidden;
+  animation: fadeIn 0.8s ease-in; 
+}
+
+.fade-out { animation: fadeOut 0.5s forwards; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+
+/* ────────────────────────────────
+   MASSIVE GLASS NAVIGATION
+──────────────────────────────── */
+nav {
+  position: fixed; 
+  top: 32px; 
+  left: 0; right: 0; 
+  z-index: 100;
+  height: 80px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  background: transparent;
+}
+
+.nav-logo {
+  position: absolute; 
+  left: 0; 
+  width: 17vw; 
+  min-width: 150px; 
+  height: 100%;
+  background: rgba(255, 255, 255, 0.05); 
+  backdrop-filter: blur(16px); 
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15); 
+  border-left: none; 
+  border-radius: 0 40px 40px 0; 
+  display: flex; 
+  align-items: center; 
+  justify-content: flex-end; 
+  padding-right: 36px; 
+}
+
+.nav-logo img { 
+  height: 38px; 
+  width: auto; 
+  object-fit: contain; 
+  filter: brightness(0) invert(1); 
+}
+
+.nav-links {
+  display: flex; 
+  align-items: center; 
+  height: 100%; 
+  list-style: none;
+  background: rgba(255, 255, 255, 0.05); 
+  backdrop-filter: blur(16px); 
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15); 
+  border-radius: 40px; 
+  padding: 0 72px; 
+  gap: 64px; 
+}
+
+.nav-links a { 
+  font-size: 14px; 
+  font-weight: 400; 
+  letter-spacing: 0.1em; 
+  color: rgba(255, 255, 255, 0.6); 
+  text-decoration: none; 
+  text-transform: uppercase; 
+  transition: all 0.2s; 
+}
+
+.nav-links a:hover { color: var(--white); }
+.nav-links a.active { color: var(--white); font-weight: 800; letter-spacing: 0.05em; }
+
+/* ────────────────────────────────
+   SCROLL REVEAL ANIMATION
+──────────────────────────────── */
+.reveal {
+  opacity: 0; 
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ────────────────────────────────
+   HERO SECTION
+──────────────────────────────── */
+.cs-hero {
+  position: relative;
+  background: linear-gradient(180deg, #630521 0%, #1a0209 100%);
+  color: var(--white);
+  padding: 180px 8vw 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 80vh;
+}
+
+.cs-hero-logo { 
+  max-width: 500px; 
+  width: 100%; 
+  margin-bottom: 40px; 
+  filter: drop-shadow(0 15px 30px rgba(0,0,0,0.5)); 
+}
+
+.cs-hero-desc { 
+  max-width: 800px; 
+  font-size: 13px; 
+  line-height: 1.8; 
+  color: rgba(255,255,255,0.8); 
+  margin-bottom: 80px; 
+}
+
+.cs-hero-desc strong { color: var(--white); font-weight: 700; }
+
+.cs-metadata {
+  width: 100%; max-width: 1200px;
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px;
+  border-top: 1px solid rgba(255,255,255,0.2); border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding: 30px 0; text-align: left; margin-top: auto;
+}
+
+.meta-logo-block { display: flex; align-items: center; gap: 16px; border-right: 1px solid rgba(255,255,255,0.2); padding-right: 20px; }
+.meta-logo-block img { height: 40px; filter: brightness(0) invert(1); }
+.meta-logo-block p { font-size: 11px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.1em; line-height: 1.4; }
+.meta-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 12px; color: var(--white); }
+.meta-col ul { list-style: none; }
+.meta-col li, .meta-col p { font-size: 12px; color: rgba(255,255,255,0.6); margin-bottom: 6px; }
+.meta-col strong { color: var(--white); }
+
+/* ────────────────────────────────
+   GENERAL BODY SECTIONS
+──────────────────────────────── */
+.cs-section { 
+  padding: 100px 8vw; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  text-align: center; 
+}
+
+.cs-heading {
+  font-family: 'Urbanist', sans-serif; 
+  font-size: 32px; 
+  font-weight: 800; 
+  color: var(--danes-red);
+  text-transform: uppercase; 
+  letter-spacing: 0.05em; 
+  margin-bottom: 60px;
+}
+
+.cs-intro-text { font-size: 16px; max-width: 900px; line-height: 1.6; margin-bottom: 40px; }
+.cs-intro-text strong { color: var(--danes-red); font-weight: 700; }
+.cs-full-banner { 
+  width: 100vw; 
+  max-width: 100vw; 
+  /* This math trick perfectly breaks the image out of the section padding */
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  height: auto; 
+  display: block;
+}
+
+.values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; max-width: 1200px; width: 100%; text-align: left; }
+.value-item h3 { font-size: 18px; color: var(--danes-red); margin-bottom: 12px; font-weight: 700; }
+.value-item p { font-size: 14px; color: var(--danes-black); line-height: 1.6; }
+
+.logos-container { display: flex; justify-content: center; gap: 80px; align-items: flex-end; }
+.logo-item { display: flex; flex-direction: column; align-items: center; }
+.logo-item img { max-width: 250px; height: auto; margin-bottom: 20px; }
+.logo-item span { font-size: 14px; font-weight: 700; color: var(--danes-red); text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* ────────────────────────────────
+   EXACT HOT MAGENTA RED DIVIDER
+──────────────────────────────── */
+.exact-divider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1080px;
+  margin: 40px auto 24px;
+  gap: 28px; 
+}
+
+.divider-line {
+  flex: 1;
+  height: 6px; 
+  background-color: var(--danes-red);
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.22); 
+  transform: translateY(-2px); 
+}
+
+.divider-center-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 4px;
+}
+
+/* THE PERFECTED TOP SHARD */
+.divider-slanted-accent {
+  width: 76px;
+  height: 11px;
+  background-color: var(--danes-red);
+  margin-bottom: 7px;
+  /* Gives the right edge the perfect half-circle curve */
+  border-top-right-radius: 50px; 
+  border-bottom-right-radius: 50px;
+  /* Keeps top-left sharp (0,0), and pulls the bottom-left point inward to the right to create the slant */
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 25% 100%); 
+}
+
+.divider-title {
+  font-family: 'Urbanist', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--danes-red);
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.divider-subtitle {
+  font-family: 'Urbanist', 'Inter', sans-serif; 
+  font-size: 15px;
+  font-weight: 400; 
+  color: var(--danes-red);
+  letter-spacing: 0.08em;
+  margin-top: 5px;
+}
+
+.divider-description {
+  font-size: 14px;
+  line-height: 1.65;
+  max-width: 720px;
+  margin: 0 auto;
+  color: var(--danes-black);
+}
+
+.divider-description strong {
+  color: var(--danes-red);
+  font-weight: 700;
+}
+
+/* ────────────────────────────────
+   EXACT TEAM COLOR & TYPOGRAPHY
+──────────────────────────────── */
+.team-color-section { text-align: center; padding-bottom: 40px; width: 100%; }
+
+.exact-title {
+  font-family: 'Urbanist', sans-serif;
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--danes-red) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 40px;
+}
+
+.color-bar-wrapper {
+  display: flex;
+  justify-content: center;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1); 
+}
+
+.color-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.color-label {
+  font-family: 'Urbanist', 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 12px;
+}
+
+.color-box {
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* THE PERFECTED COLOR BAR SWATCHES */
+.swatch-accent {
+  width: 44px;
+  height: 8px;
+  margin-bottom: 14px;
+  /* Mirrors the exact curve and slant as the divider shard */
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 25% 100%);
+}
+
+.hex-code {
+  font-family: 'Gill Sans MT Condensed', sans-serif;
+  font-size: 34px;
+  font-weight: 400; 
+  letter-spacing: 0.03em;
+}
+
+/* EDGE-TO-EDGE TYPOGRAPHY BANNERS */
+.exact-typo-banners {
+  /* This math trick breaks the wrapper out of the padding */
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 60px;
+}
+
+.banner-top, .banner-bottom {
+  width: 100%; /* Tells the red banners to completely fill the expanded wrapper */
+  background-color: var(--danes-red);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-top { padding: 10px 0; }
+.banner-bottom { padding: 14px 0; }
+
+.banner-top span {
+  font-family: 'Gill Sans MT Condensed', sans-serif;
+  font-size: 64px;
+  color: var(--white);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em; /* Tucks the letters slightly closer together to match the mockup */
+}
+
+.banner-bottom span {
+  font-family: 'Urbanist', sans-serif;
+  font-size: 72px;
+  color: var(--white);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.typo-desc { max-width: 800px; font-size: 14px; line-height: 1.6; }
+.typo-desc strong { color: var(--danes-red); }
+
+/* ────────────────────────────────
+   FULL WIDTH MOCKUPS & SOCIALS
+──────────────────────────────── */
+.cs-graphic-full { 
+  width: 100vw; 
+  max-width: 100vw; 
+  /* This math trick perfectly breaks the image out of the section padding */
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  height: auto; 
+  display: block;
+}
+.cs-mockup-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1200px; width: 100%; }
+.cs-mockup-grid img { width: 100%; height: auto; object-fit: cover; }
+
+/* ────────────────────────────────
+   MOCKUP INTERACTIVE SLIDER
+──────────────────────────────── */
+.mockup-slider-section {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  padding: 100px 8vw;
+  background-color: var(--danes-black); /* Dark Team Liquid Style Background */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.mockup-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.mockup-title {
+  font-family: 'Urbanist', sans-serif;
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.mockup-controls {
+  display: flex;
+  gap: 16px;
+}
+
+.mockup-arrow {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--white);
+  transition: all 0.2s ease;
+}
+
+.mockup-arrow:hover {
+  background: var(--danes-red);
+  border-color: var(--danes-red);
+  transform: scale(1.05);
+}
+
+.mockup-arrow svg {
+  width: 22px;
+  height: 22px;
+}
+
+.mockup-track-container {
+  width: 100%;
+  overflow: hidden; 
+}
+
+.mockup-track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 24px; 
+  /* Hides scrollbar for clean look */
+  scrollbar-width: none; 
+  -ms-overflow-style: none;  
+}
+
+.mockup-track::-webkit-scrollbar {
+  display: none; 
+}
+
+.mockup-card {
+  /* Shows exactly 4 cards at a time, adjusts nicely down to 1 on mobile */
+  flex: 0 0 calc(25% - 18px); 
+  min-width: 280px; 
+  background: var(--white);
+  border-radius: 8px; /* Clean, subtle curves like TL */
+  overflow: hidden;
+  aspect-ratio: 4/5; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+.mockup-card:hover {
+  transform: translateY(-8px);
+}
+
+.mockup-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+
+/* ────────────────────────────────
+   SOCIAL MEDIA SECTION (CENTER PEEK LAYOUT)
+──────────────────────────────── */
+.social-carousel-section {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  background-color: var(--danes-black);
+  padding: 100px 0 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden; /* Prevents horizontal scrollbars from full-width track */
+}
+
+.social-carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100vw;
+  margin: 0 auto;
+}
+
+/* Expands wrapper to 100% viewport width so side cards can peek in */
+.social-track-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 30px 0; /* Vertical breathing room for scaled cards */
+}
+
+/* Vertically aligns scaled side cards to the exact center of the active card */
+.social-track {
+  display: flex;
+  align-items: center; 
+  gap: 28px;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+/* Default state for side cards (Dimmed & Scaled Down) */
+.social-card {
+  flex: 0 0 440px;
+  width: 440px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease, filter 0.5s ease, box-shadow 0.5s ease;
+  
+  transform: scale(0.82);
+  opacity: 0.22; 
+  filter: brightness(0.25);
+  cursor: pointer;
+}
+
+.social-card.active {
+  transform: scale(1);
+  opacity: 1;
+  filter: brightness(1); 
+  box-shadow: 0 0 45px rgba(252, 4, 76, 0.18), 0 25px 50px rgba(0, 0, 0, 0.85);
+  cursor: default;
+}
+
+.social-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+
+/* Overlaid Navigation Arrows (Retaining exact brand design) */
+.social-header {
+  width: 100%;
+  padding: 0 8vw; /* Matches your master site-wide margins */
+  display: flex;
+  justify-content: center; /* Keeps "SOCIAL MEDIA" locked dead-center */
+  align-items: center;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.social-header .cs-heading {
+  margin-bottom: 0; /* Strips default heading gap */
+}
+
+.social-controls {
+  position: absolute;
+  right: 8vw; /* Pins buttons to the far right edge of the page */
+  display: flex;
+  gap: 14px;
+}
+
+/* Base button styling (stripped of old absolute image-hover coordinates) */
+.social-arrow {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--white);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.social-arrow:hover {
+  background: var(--danes-red);
+  border-color: var(--danes-red);
+  transform: scale(1.06); 
+}
+
+.social-arrow svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Dot Indicators */
+.social-dots {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.social-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.social-dot.active {
+  background: var(--danes-red);
+  transform: scale(1.3);
+}
+
+
+
+/* ────────────────────────────────
+   DISCLAIMER TEXT
+──────────────────────────────── */
+.cs-disclaimer {
+  margin-top: 32px; 
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--danes-red); 
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  max-width: 800px;
+  text-align: center;
+}
+
+.cs-disclaimer strong {
+  color: var(--danes-red);
+  font-weight: 700;
+}
+
+/* ────────────────────────────────
+   MASTER RESPONSIVE BREAKPOINTS
+──────────────────────────────── */
+@media (max-width: 900px) {
+  .cs-metadata { grid-template-columns: 1fr 1fr; }
+  .meta-logo-block { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 20px; grid-column: span 2; }
+  .values-grid { grid-template-columns: 1fr 1fr; }
+  .logos-container { flex-direction: column; gap: 40px; align-items: center; }
+  
+  .exact-divider-container { gap: 10px; max-width: 90%; }
+  .divider-title { font-size: 18px; }
+  .divider-subtitle { font-size: 14px; }
+  
+  .color-bar-wrapper { flex-wrap: wrap; }
+  .color-col { min-width: 50%; margin-bottom: 24px; }
+  
+  .banner-top span { font-size: 40px; }
+  .banner-bottom span { font-size: 48px; }
+  
+  .mockup-card { flex: 0 0 calc(50% - 12px); } /* Show 2 cards on tablet */
+}
+
+@media (max-width: 600px) {
+  .cs-metadata, .values-grid { grid-template-columns: 1fr; }
+  .meta-logo-block { grid-column: span 1; }
+  
+  .exact-divider-container { flex-direction: column; gap: 6px; }
+  .divider-line { width: 100%; height: 3px; }
+  
+  .mockup-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .mockup-card { flex: 0 0 85%; } /* Show 1 wide card on mobile, peeking at next */
+}
+
+@media (max-width: 900px) {
+  .social-card { flex: 0 0 440px; width: 440px; }
+  .social-prev { left: calc(50% - 280px); }
+  .social-next { right: calc(50% - 280px); }
+}
+
+@media (max-width: 600px) {
+  .social-track { gap: 16px; }
+  .social-card { flex: 0 0 280px; width: 280px; }
+  .social-prev { left: calc(50% - 175px); width: 42px; height: 42px; }
+  .social-next { right: calc(50% - 175px); width: 42px; height: 42px; }
+}
